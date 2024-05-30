@@ -21,3 +21,10 @@ INNER JOIN authors a ON a.au_id = t2.au_id
 GROUP BY a.au_id, a.au_lname, a.au_fname
 ORDER BY COUNT(t.title_id) DESC
 LIMIT 3;
+
+/* Desafío 4 */
+SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', COUNT(t.title_id) AS 'TOTAL'
+FROM authors a
+LEFT JOIN titleauthor t ON t.au_id = a.au_id
+GROUP BY a.au_id, a.au_lname, a.au_fname
+ORDER BY COUNT(t.title_id) DESC;
