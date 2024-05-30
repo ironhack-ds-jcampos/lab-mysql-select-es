@@ -12,3 +12,12 @@ INNER JOIN titleauthor t2 ON t2.title_id = t.title_id
 INNER JOIN authors a ON a.au_id = t2.au_id
 INNER JOIN publishers p ON p.pub_id = t.pub_id
 GROUP BY a.au_id, a.au_lname, a.au_fname, p.pub_name;
+
+/* Desafío 3 */
+SELECT a.au_id AS 'AUTHOR ID', a.au_lname AS 'LAST NAME', a.au_fname AS 'FIRST NAME', COUNT(t.title_id) AS 'TOTAL'
+FROM titles t
+INNER JOIN titleauthor t2 ON t2.title_id = t.title_id
+INNER JOIN authors a ON a.au_id = t2.au_id
+GROUP BY a.au_id, a.au_lname, a.au_fname
+ORDER BY COUNT(t.title_id) DESC
+LIMIT 3;
